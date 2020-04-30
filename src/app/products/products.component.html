@@ -1,0 +1,16 @@
+<h1>products works!</h1>
+<input *ngIf="!isDisabled" type="text" [(ngModel)]="ProductName">
+<!-- {{ ProductName }}
+<button (click)="ProductName='A Products'" [disabled]="isDisabled">Change Name</button> -->
+<button *ngIf="!isDisabled"  [(ngModel)]="ProductName">AddProduct</button>
+<div *ngFor="let product of products">{{ product }}</div>
+<app-product (productClicked)="onRemoveProduct(product)"*ngFor="let product of products" [productName ="product"]></app-product>
+<br>
+<br>
+<h1>My Products</h1>
+<form (ngSubmit)="onAddProduct(f)" #f="ngForm">
+<input type="text" ngModel name="productName"  [(ngModel)]="ProductName" required>
+ <button type="submit"  [(ngModel)]="ProductName">Add Product</button>
+</form>
+<app-product (productClicked)="onRemoveProduct(product)"*ngFor="let product of products" [productName ="product"]></app-product>
+<br>
